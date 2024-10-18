@@ -6,6 +6,7 @@ import random
 import asyncio
 from typing import AsyncGenerator, List
 from time import time
+from asyncio import gather
 
 
 async_comprehension = __import__('1-async_comprehension').async_comprehension
@@ -26,7 +27,7 @@ async def measure_runtime() -> float:
     start_time = time()  # Start the timer
 
     # Execute async_comprehension four times in parallel
-    await asyncio.gather(
+    await gather(
             async_comprehension(),
             async_comprehension(),
             async_comprehension(),
